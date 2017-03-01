@@ -12,8 +12,6 @@ use enterprise\cadastroServiceCar\servicosCar;
 use enterprise\contactCliente\webmail;
 use home\errors\InvalidArgument;
 
-
-
 class Controller
 {
 
@@ -33,7 +31,7 @@ class Controller
     public function cFuncionarioAction (Request $request){
         $error = '';
         $this->session = new Session();
-        $permission = ['admin' , 'gabriel'];
+        $permission = ['admin' , 'gabriel', 'igor'];
         $user = $this->session->get('user');
         if ( !in_array($user,$permission)){
             //add flash message
@@ -44,7 +42,7 @@ class Controller
             try {
                 $this->funcionario = new Funcionario($request->request->get('name'), $request->request->get('cpf'));
                 $this->funcionario->save();
-                $this->session->set('Funcionario', $this->funcionario);
+                $this->session->set($user, $this->funcionario);
                 return new RedirectResponse (__DIR__ . '/../view/adm.php');
 
             }
