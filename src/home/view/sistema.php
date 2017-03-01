@@ -16,6 +16,13 @@
     </div>
 </form>
 
+<form action="/santana/front.php/cFuncionario" method="POST">
+
+    <div class="container">
+        <button type="submit">Cadastrar funcionários</button>
+    </div>
+</form>
+
 
 </body>
 
